@@ -1,0 +1,31 @@
+{
+  "add-flight-button": "إضافة رحلة",
+  "adults-input-label": "بالغون",
+  "airlines": "الخطوط الجويّة",
+  "arrival-airport": "مطار الوصول",
+  "arrival-date": "تاريخ الوصول",
+  "cabin-class": "درجة المقصورة",
+  "cabin-class-type": {
+    "economy": "الدرجة الإقتصادية",
+    "business": "درجة الأعمال",
+    "first": "الدرجة الأولى",
+    "premium_economy": "الدرجة الممتازة"
+  },
+  "carriers": "الخطوط الجويّة",
+  "children-input-label": "أطفال (2-12)",
+  "departure-airport": "مطار المغادرة",
+  "departure-date": "تاريخ المغادرة",
+  "duration": "المدة",
+  "hrs": "ساعة",
+  "infants-input-label": "رضّع (سنتان وما دون)",
+  "price": "السعر",
+  "stops": "عدد الوقفات",
+  "search-flights": "البحث عن رحلات",
+  "sort-by": "فرز حسب",
+  "trip-date": "تاريخ الرحلة",
+  "trip-type": {
+    "one-way": "ذهاب",
+    "round": "ذهاب وإياب",
+    "multi-city": "عدة وجهات"
+  }
+}

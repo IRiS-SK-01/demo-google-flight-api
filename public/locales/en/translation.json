@@ -1,0 +1,31 @@
+{
+  "add-flight-button": "Add Flight",
+  "adults-input-label": "Adults",
+  "airlines": "Airlines",
+  "arrival-airport": "Arrival Airport",
+  "arrival-date": "Arrival Airport",
+  "cabin-class": "Cabin Class",
+  "cabin-class-type": {
+    "economy": "Economy",
+    "business": "Business",
+    "first": "First",
+    "premium_economy": "Premium Economy"
+  },
+  "carriers": "Carriers",
+  "children-input-label": "Children (2-12)",
+  "departure-airport": "Departure Airport",
+  "departure-date": "Arrival Date",
+  "duration": "Duration",
+  "hrs": "hrs",
+  "infants-input-label": "Infants (under 2)",
+  "price": "Price",
+  "search-flights": "Search Flights",
+  "stops": "Stops",
+  "sort-by": "Sort By",
+  "trip-date": "Trip date",
+  "trip-type": {
+    "one-way": "One Way",
+    "round": "Round Trip",
+    "multi-city": "Multiple Cities"
+  }
+}

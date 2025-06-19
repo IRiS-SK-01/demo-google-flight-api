@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FlightMap } from '../flight-map';
 import type { Itinerary } from '../../types/search-Flight-response';
 import { motion } from 'framer-motion';
+import { prepareLegsWithCoordinates } from '../../utils/prepare-airport-legs-coords';
 
 type Props = {
     open: boolean;
@@ -24,8 +25,6 @@ type Props = {
 
 const FlightDetailHero: React.FC<Props> = ({ open, onClose, itinerary }) => {
     if (!itinerary) return null;
-    const leg = itinerary.legs[0];
-
     return (
         <Card
             component={motion.div}
@@ -109,9 +108,8 @@ const FlightDetailHero: React.FC<Props> = ({ open, onClose, itinerary }) => {
                                         </Box>
                                     ))}
                                 </Grid>
-
                                 {/* Flight Map */}
-                                <Grid item xs={12} md={5} sx={{ pl: 5}}>
+                                <Grid item xs={12} md={5} sx={{ pl: 5 }}>
                                     <Box
                                         sx={{
                                             height: '100%',
@@ -123,14 +121,8 @@ const FlightDetailHero: React.FC<Props> = ({ open, onClose, itinerary }) => {
                                         }}
                                     >
                                         <FlightMap
-                                            from={{
-                                                code: leg.origin.displayCode,
-                                                coordinates: [leg.origin.longitude, leg.origin.latitude],
-                                            }}
-                                            to={{
-                                                code: leg.destination.displayCode,
-                                                coordinates: [leg.destination.longitude, leg.destination.latitude],
-                                            }}
+                                            legsCoords=
+                                            {prepareLegsWithCoordinates(itinerary.legs)}
                                         />
                                     </Box>
                                 </Grid>

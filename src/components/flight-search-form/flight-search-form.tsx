@@ -18,9 +18,6 @@ export default function FlightSearchForm() {
     const [departureAirportCoord, setDepartureAirportCoord] = useState<[number, number] | null>(null);
     const [arrivalAirportCoord, setArrivalAirportCoord] = useState<[number, number] | null>(null);
 
-    const [departureDate, setDepartureDate] = useState('');
-    const [returnDate, setReturnDate] = useState('');
-
     const [legs, setLegs] = useState<_FlightLeg[]>([
         { departureAirport: '', arrivalAirport: '', departureDate: '' },
     ]);
@@ -36,20 +33,6 @@ export default function FlightSearchForm() {
 
     const { t } = useTranslation();
 
-
-    const _addFlightLeg = () => {
-        setLegs((prev) => [...prev, { departureAirport: '', arrivalAirport: '', departureDate: '' }]);
-    }
-
-    const _removeLeg = (indexToRemove: number) => {
-        setLegs((prev) => prev.filter((_, index) => index !== indexToRemove));
-    };
-
-    const _updateLeg = (index: number, key: keyof _FlightLeg, value: string) => {
-        setLegs((prev) =>
-            prev.map((leg, i) => (i === index ? { ...leg, [key]: value } : leg))
-        );
-    };
 
     useEffect(() => {
         if (!departureAirport || departureAirport.length !== 3) {

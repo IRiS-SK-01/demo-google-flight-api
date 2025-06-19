@@ -1,5 +1,5 @@
 import PageLayout from "../page-layout";
-import SearchResults from "./flight-search-results";
+import SearchResults from "../../components/flight-search-results/flight-search-results";
 
 export default function Results() {
     return (

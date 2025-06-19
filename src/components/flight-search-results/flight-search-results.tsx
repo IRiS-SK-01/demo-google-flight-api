@@ -4,11 +4,11 @@ import { useSearchParams } from 'react-router-dom';
 import { searchFlights } from '../../services/flight-services';
 import { Card, Container, Skeleton, Stack } from '@mui/material';
 import type { Itinerary } from '../../types/search-Flight-response';
-import { FlightCard } from '../../components/flight-card/flight-card';
+import { FlightCard } from '../flight-card/flight-card';
 import Grid from '@mui/material/Grid';
 import { FlightFilters } from './flight-filters';
 import { SortOption } from '../../types/flight';
-import FlightDetailHero from '../../components/flight-card/flight-detailed-hero';
+import FlightDetailHero from '../flight-card/flight-detailed-hero';
 import { AnimatePresence } from 'framer-motion';
 
 const SearchResults: React.FC = () => {
@@ -29,14 +29,6 @@ const SearchResults: React.FC = () => {
 
     const [selectedItinerary, setSelectedItinerary] = useState<Itinerary | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
-
-    const returnDate = searchParams.get('returnDate');
-
-    const cabinClass = searchParams.get('cabinClass');
-
-    const adultsCount = searchParams.get('adultsCount');
-    const childrenCount = searchParams.get('childrenCount');
-    const infantsCount = searchParams.get('infantsCount');
 
     useEffect(() => {
         if (!origin || !destination || !date) return;
@@ -112,7 +104,6 @@ const SearchResults: React.FC = () => {
                         {isLoading && (
                             <>
                                 {[...Array(3)].map((_, i) => (
-                                    // <Skeleton key={i} variant="rounded" height={150} sx={{ mb: 2, borderRadius: 2 }} />
                                     <Skeleton key={i} height={200} width={'20vw'} animation="wave" sx={{ borderRadius: 2 }}></Skeleton>
                                 ))}
                             </>

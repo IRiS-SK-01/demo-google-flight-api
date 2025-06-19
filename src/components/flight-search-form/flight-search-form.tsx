@@ -52,10 +52,7 @@ export default function FlightSearchForm() {
     };
 
     useEffect(() => {
-        // console.log('[from effect] from =', from);
-
         if (!departureAirport || departureAirport.length !== 3) {
-            // console.log('[from effect] Invalid from input, clearing coordinates');
             setDepartureAirportCoord(null);
             return;
         }
@@ -65,10 +62,8 @@ export default function FlightSearchForm() {
         );
 
         if (airport) {
-            // console.log('[from effect] Found airport:', airport.name);
             setDepartureAirportCoord([airport.longitude, airport.latitude]);
         } else {
-            // console.log('[from effect] No airport found for code:', from);
             setDepartureAirportCoord(null);
         }
     }, [departureAirport]);
@@ -115,7 +110,6 @@ export default function FlightSearchForm() {
             <Card sx={{ p: 2, maxWidth: 1,
                 maxHeight: '60vh',
                 overflow: 'scroll',
-                // overflowAnchor: 'initial',
                 mx: 'auto', bgcolor: '#fbfbfb' }}>
 
                 {/* Passenger Info */}

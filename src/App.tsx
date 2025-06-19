@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import FlightSearchResults from './pages/flight-search-results/flight-search-results';
+import FlightSearchResults from './components/flight-search-results/flight-search-results';
 import Home from './pages/home/home';
 import { prefixer } from 'stylis';
 import { AppBar, Toolbar, Typography, Box, Button, ThemeProvider, createTheme } from '@mui/material';

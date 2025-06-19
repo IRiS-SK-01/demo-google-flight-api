@@ -60,20 +60,20 @@ export const searchFlightsMultiStops = async (legs: Leg[]) => {
 
 const prepareLegsPayload = async (legs: Leg[]) => {
     const legsWithEntities = await Promise.all(
-        legs.map(async ({ origin, destination, date }) => {
+        legs.map(async ({ origin, destination, departure }) => {
             const [originData, destinationData] = await Promise.all([
-                searchAirport(origin),
-                searchAirport(destination),
+                searchAirport(origin.displayCode),
+                searchAirport(destination.displayCode),
             ]);
 
-            if (!originData.length || !destinationData.length || !date) {
+            if (!originData.length || !destinationData.length || !departure) {
                 throw new Error('Missing airport data or date for leg');
             }
 
             return {
                 originEntityId: originData[0].entityId,
                 destinationEntityId: destinationData[0].entityId,
-                date,
+                departure,
             };
         })
     );

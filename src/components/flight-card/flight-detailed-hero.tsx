@@ -2,7 +2,6 @@ import {
     Modal,
     Box,
     Card,
-    Grid,
     Typography,
     Divider,
     Avatar,
@@ -16,6 +15,7 @@ import { FlightMap } from '../flight-map';
 import type { Itinerary } from '../../types/search-Flight-response';
 import { motion } from 'framer-motion';
 import { prepareLegsWithCoordinates } from '../../utils/prepare-airport-legs-coords';
+import Grid from '@mui/material/Grid';
 
 type Props = {
     open: boolean;

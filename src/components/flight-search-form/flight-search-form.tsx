@@ -1,13 +1,12 @@
-import { Box, Button, Card, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Card, FormControl,  InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { FlightMap } from '../flight-map';
+import Grid from '@mui/material/Grid';
 import airportsData from 'airport-data/airports.json';
 import { CabinClass, TripType } from '../../types/flight';
 import { TripTypeSelector } from './trip-type-selector';
 import HorizontalDashedDivider from './horizontal-dashed-divider';
-import MultiCityLegRow from './multi-city-leg-row';
 import TripFormFactory from './flight-form-factory';
 
 export default function FlightSearchForm() {
@@ -17,10 +16,6 @@ export default function FlightSearchForm() {
 
     const [departureAirportCoord, setDepartureAirportCoord] = useState<[number, number] | null>(null);
     const [arrivalAirportCoord, setArrivalAirportCoord] = useState<[number, number] | null>(null);
-
-    const [legs, setLegs] = useState<_FlightLeg[]>([
-        { departureAirport: '', arrivalAirport: '', departureDate: '' },
-    ]);
 
     const [tripType, setTripType] = useState<TripType>(TripType.ONE_WAY);
 

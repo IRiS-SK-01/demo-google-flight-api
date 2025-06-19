@@ -52,7 +52,7 @@ export const FlightMap: React.FC<Props> = ({ legsCoords: legs }) => {
                             <text
                                 textAnchor="middle"
                                 y={-10}
-                                style={{ fill: 'white', fontSize: 10 }}
+                                style={{ fill: 'white', fontSize: 30 }}
                             >
                                 {from.code}
                             </text>
@@ -66,7 +66,7 @@ export const FlightMap: React.FC<Props> = ({ legsCoords: legs }) => {
                             <text
                                 textAnchor="middle"
                                 y={-10}
-                                style={{ fill: 'white', fontSize: 10 }}
+                                style={{ fill: 'white', fontSize: 30 }}
                             >
                                 {to.code}
                             </text>

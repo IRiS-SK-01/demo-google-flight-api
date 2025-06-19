@@ -65,6 +65,7 @@ export interface Segment {
 }
 
 export interface Place {
+    toUpperCase(): unknown;
     longitude: number;
     latitude: number;
     id: string;

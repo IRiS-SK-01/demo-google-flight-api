@@ -2,37 +2,32 @@ import {
     ComposableMap,
     Geographies,
     Geography,
-    Line,
     Marker,
+    Line,
 } from 'react-simple-maps';
+import React from 'react';
+import type { AirportCoordsLeg } from '../types/flight-map';
 
 const geoUrl =
     'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
 
-type AirportCoord = {
-    code: string;
-    coordinates: [number, number] | null; // [longitude, latitude]
-};
-
 type Props = {
-    from: AirportCoord;
-    to: AirportCoord;
+    legsCoords: AirportCoordsLeg[];
 };
 
-export const FlightMap: React.FC<Props> = ({ from, to }) => {
-    const fromCoordinates = from.coordinates;
-    const toCoordinates = to.coordinates;
-
+export const FlightMap: React.FC<Props> = ({ legsCoords: legs }) => {
     return (
         <ComposableMap
             projection="geoEqualEarth"
             projectionConfig={{
-                scale: 200,           // Zoom in
-                center: [12, 10]       // Move the map center away from the poles
+                scale: 200,
+                center: [12, 10],
             }}
             style={{
-                width: '100%', backgroundColor: "#0066cc", overflow: 'hidden',      // important to clip the border radius
+                width: '100%',
+                backgroundColor: '#0066cc',
+                overflow: 'hidden',
             }}
         >
             <Geographies geography={geoUrl}>
@@ -48,41 +43,48 @@ export const FlightMap: React.FC<Props> = ({ from, to }) => {
                 }
             </Geographies>
 
-            {/* Origin Marker */}
-            {fromCoordinates && (
-                <Marker coordinates={fromCoordinates}>
-                    <circle r={5} fill="white" />
-                    <text
-                        textAnchor="middle"
-                        y={-10}
-                        style={{ fill: 'white', fontSize: 10 }}
-                    >
-                        {from.code}
-                    </text>
-                </Marker>
-            )}
+            {legs.map(({ from, to }, index) => (
+                <React.Fragment key={index}>
+                    {/* From marker */}
+                    {from.coordinates && (
+                        <Marker coordinates={from.coordinates}>
+                            <circle r={5} fill="white" />
+                            <text
+                                textAnchor="middle"
+                                y={-10}
+                                style={{ fill: 'white', fontSize: 10 }}
+                            >
+                                {from.code}
+                            </text>
+                        </Marker>
+                    )}
 
-            {/* Destination Marker */}
-            {toCoordinates && (<Marker coordinates={toCoordinates}>
-                <circle r={5} fill="white" />
-                <text
-                    textAnchor="middle"
-                    y={-10}
-                    style={{ fill: 'white', fontSize: 10 }}
-                >
-                    {to.code}
-                </text>
-            </Marker>)}
+                    {/* To marker */}
+                    {to.coordinates && (
+                        <Marker coordinates={to.coordinates}>
+                            <circle r={5} fill="white" />
+                            <text
+                                textAnchor="middle"
+                                y={-10}
+                                style={{ fill: 'white', fontSize: 10 }}
+                            >
+                                {to.code}
+                            </text>
+                        </Marker>
+                    )}
 
-            {/* Curved Flight Line */}
-            {fromCoordinates && toCoordinates && (<Line
-                from={fromCoordinates}
-                to={toCoordinates}
-                stroke="#fff"
-                strokeWidth={2}
-                strokeLinecap="round"
-            // curve={0.5}
-            />)}
+                    {/* Line between from and to */}
+                    {from.coordinates && to.coordinates && (
+                        <Line
+                            from={from.coordinates}
+                            to={to.coordinates}
+                            stroke="#fff"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                        />
+                    )}
+                </React.Fragment>
+            ))}
         </ComposableMap>
     );
 };

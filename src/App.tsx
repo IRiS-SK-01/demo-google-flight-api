@@ -1,17 +1,16 @@
 
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import FlightSearchResults from './components/flight-search-results/flight-search-results';
-import Home from './pages/home/home';
 import { prefixer } from 'stylis';
 import { AppBar, Toolbar, Typography, Box, Button, ThemeProvider, createTheme } from '@mui/material';
-import i18n from './i18n/i18n';
 import { useTranslation } from 'react-i18next';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import rtlPlugin from 'stylis-plugin-rtl';
 import { changeLanguage } from 'i18next';
 import Results from './pages/flight-search-results/results';
+import Home from './pages/home/home';
+import i18n from './i18n/i18n';
 
 const getThemeDirection = (lang: string) => (lang === 'ar' ? 'rtl' : 'ltr');
 
